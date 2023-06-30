@@ -3,10 +3,10 @@ from .models import Room
 # from django.http import HttpResponse
 
 
-rooms = Room.objects.all() 
-print(rooms)
 
 def home(request): 
+    rooms = Room.objects.all() 
+    print(rooms)
     return render(request,'base/home.html', {'rooms' : rooms});
 
 
