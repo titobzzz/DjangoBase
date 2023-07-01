@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Room
+from .models import Room, Topic , Message 
 
 
 
@@ -7,4 +7,6 @@ from .models import Room
 #     list_display = (','name','description','created',)
 
 admin.site.register(Room)
+admin.site.register(Topic)
+admin.site.register(Message)
 # # Register your models here.
