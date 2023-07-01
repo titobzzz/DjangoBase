@@ -18,6 +18,14 @@ def room(request,pk):
 
 
 def createRoom(request):
+    if request.method == "POST":
+        # Implemnet what to do when the user fills and submits
+        # the form
+        pass
+    
+    # If request method isn't POST(when its get)
     context={}
-    return render(request, 'base/room_form.html', context )
+    return render(request, 'base/room_form.html', context)
+
 # Create your views here.
+
