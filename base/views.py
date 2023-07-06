@@ -1,13 +1,22 @@
-from django.shortcuts import render
-from .models import Room
-# from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.db.models import Q
+from .models import Room, Topic
+from .forms import RoomForm
 
 
 
 def home(request): 
-    rooms = Room.objects.all() 
-    print(rooms)
-    return render(request,'base/home.html', {'rooms' : rooms});
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+   
+    rooms = Room.objects.filter(topic__name__icontains=q ) 
+
+    topics = Topic.objects.all()
+
+    context={
+        'rooms' : rooms,
+        'topics':topics
+        }
+    return render(request,'base/home.html', context );
 
 
 # pass a parameter 
@@ -18,6 +27,43 @@ def room(request,pk):
 
 
 def createRoom(request):
-    context={}
+
+    form = RoomForm()     
+#have a form and check if its is a POST request then
+    if request.method == 'POST':
+        # pass all the POST request into form(RoomForm)
+        form =  RoomForm(request.POST)
+        # check if the form is valid  if so save and redirect
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        
+    context={'form': form}
     return render(request, 'base/room_form.html', context )
 # Create your views here.
+
+
+def updateRoom(request,pk):
+    room = Room.objects.get(id=pk)
+    form = RoomForm(instance=room)
+
+    if request.method == 'POST':
+        form = RoomForm(request.POST, instance=room )
+        
+        if form.is_valid: 
+            form.save()
+            print(form)
+            return redirect('home')
+
+    context= {'form': form}
+    return render(request, 'base/room_form.html',context)
+
+def deleteRoom(request,pk):
+    
+    room = Room.objects.get(id=pk)
+  #if request type is POST then delete
+    if request.method == 'POST':
+       room.delete()
+       return redirect('home')
+      
+    return render(request, 'base/delete.html',{'obj': room})
