@@ -1,9 +1,10 @@
 {% extends 'main.html' %}
 
 {% block content %}
-
+{% if form == 'loginPage' %}
 <div>
-    <form method="POST" action="{% url 'home' %}">
+    <form method="POST" action="{% url 'loginPage' %}">
+        <!-- had a bug here because i was sending to the home page not loginpage  -->
         {% csrf_token %}
         <label>Username:</label>
         <input type="text" name="username" placeholder="Enter Username" />
@@ -13,6 +14,19 @@
 
         <input type="submit" value="submit"/>
     </form>
+    <p>I dont have an account</p>
+    <a href="{% url 'registerPage' %}">Register</a>
 </div>
-
+{% else %}
+<div>
+    <form method="POST" action="{% url 'registerPage' %}">
+        <!-- had a bug here because i was sending to the home page not loginpage  -->
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="register"/>
+    </form>
+    <p>I already have an account</p>
+    <a href="{% url 'loginPage' %}">Login</a>
+</div>
+{% endif %}
 {% endblock content%}
