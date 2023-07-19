@@ -12,8 +12,9 @@ from django.contrib.auth.models import User
 
 
 def loginPage(request):
+   
     page='loginPage'
-
+    
     if request.user.is_authenticated:
         return redirect('home')
 
@@ -22,7 +23,8 @@ def loginPage(request):
         password = request.POST.get('password').lower()
 
         try:
-            user = User.objects.get(username=username) 
+            user = User.objects.get(username=username)
+            print("USER",user)
         except:
             messages.error(request, "username does not exist")
         
@@ -111,10 +113,17 @@ def room(request,pk):
 
 @login_required(login_url='loginPage')
 def userProfile(request, pk):
-    print("USER ID",User.host.id)
     user = User.objects.get(id=pk)
-     
-    context={'user':user}
+    rooms = user.room_set.all()
+    room_message= user.message_set.all()
+    topics= Topic.objects.all()
+
+    context={
+        'user':user,
+        'rooms':rooms,
+        'room_messages': room_message,
+        'topics':topics
+        }
     return render(request,'base/profile.html',context)
 
 
@@ -129,7 +138,8 @@ def createRoom(request):
         form =  RoomForm(request.POST)
         # check if the form is valid  if so save and redirect
         if form.is_valid():
-            form.save()
+            room = form.save(commit=False)
+            room.host = request.user
             return redirect('home')
         
     context={'form': form}

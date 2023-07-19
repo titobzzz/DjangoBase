@@ -6,7 +6,7 @@
             {% if request.user == message.user %}
             <a href="{% url 'deleteMessage' message.id %}">Delete</a>
             {% endif %}
-            <p>{{message.user}}  {{message.created|timesince}}</p>
+            <div><a href="{% url 'userProfile' message.user.id %}">{{message.user}} </a>{{message.created|timesince}}</div>
            <small>replied to "{{message.room}}"</small> 
             <p>{{message}}</p>
             <hr>
