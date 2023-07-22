@@ -9,6 +9,7 @@ urlpatterns =[
     path('logOut/', views.logOut, name="logOut"),
     path('', views.home, name="home"),
     path('room/<str:pk>', views.room, name="room"),
+    path('updateUser/', views.updateUser, name='updateUser'),
     path('createRoom/', views.createRoom, name="createRoom"),
     path('deleteRoom/<str:pk>', views.deleteRoom, name="deleteRoom"),
     path('deleteMessage/<str:pk>', views.deleteMessage, name="deleteMessage"),
