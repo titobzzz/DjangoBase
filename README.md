@@ -34,6 +34,7 @@ The majority of the branches were made to store the source codes with errors and
 
 ## App preview 
 ### Rooms
-![rooms](./static/134747155-3ca5b55f-b064-4741-aeae-abe90bddf41e.png)
+![134747155-3ca5b55f-b064-4741-aeae-abe90bddf41e](https://github.com/titobzzz/DjangoBase/assets/105544565/2bcbdce2-aceb-4526-9cab-6f38952da1d8)
 ### feeds
-![rooms](./static/134747262-0a92233d-8010-40f8-84c5-8d94895aac44.png)
+![134747262-0a92233d-8010-40f8-84c5-8d94895aac44](https://github.com/titobzzz/DjangoBase/assets/105544565/2b29ae69-326d-4f8c-ac20-a1f14b8e2d98)
+
