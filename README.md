@@ -34,6 +34,5 @@ The majority of the branches were made to store the source codes with errors and
 
 ## App preview 
 ### Rooms
-[![Room](https://ibb.co/4RYygxx)]
+
 ### feeds
-[![feeds](https://ibb.co/TWJTy4p)]
