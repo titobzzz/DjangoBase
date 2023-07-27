@@ -33,7 +33,7 @@ This project is a community study platform just like Discord but for programmers
 The majority of the branches were made to store the source codes with errors and bugs I encountered while building the project, such as **No Reverse match**,**value error at ..**  and many more :smiley: Thanks to @hephhay and @olaniyigeorge for the help.
 
 ## App preview 
-
-![Room](https://ibb.co/4RYygxx)
-
-![feeds](https://ibb.co/TWJTy4p)
+### Rooms
+[![Room](https://ibb.co/4RYygxx)]
+### feeds
+[![feeds](https://ibb.co/TWJTy4p)]
